@@ -1,0 +1,4 @@
+/* App-level layout tweaks — tokens live in index.css */
+.app-shell {
+  isolation: isolate;
+}

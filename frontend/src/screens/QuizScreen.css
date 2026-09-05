@@ -1,0 +1,33 @@
+.quiz-screen {
+  background: var(--navy-50);
+  gap: var(--space-4);
+  padding-top: calc(var(--space-4) + var(--safe-top));
+}
+
+.quiz-top {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.quiz-top-row {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: var(--space-3);
+  align-items: end;
+}
+
+.quiz-body {
+  flex: 1;
+  position: relative;
+  overflow: hidden;
+}
+
+.quiz-slide {
+  width: 100%;
+}
+
+/* Hide the duplicate linear timer label row visually tight — circular is primary on small screens */
+.quiz-top > .timer-bar .timer-bar-top {
+  display: none;
+}

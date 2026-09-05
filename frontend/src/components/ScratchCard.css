@@ -1,0 +1,117 @@
+.scratch-card {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1.55 / 1;
+  max-height: 220px;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-card), 0 2px 0 rgba(255, 255, 255, 0.35) inset;
+  background: var(--navy-900);
+  touch-action: none;
+  user-select: none;
+  -webkit-user-select: none;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transform-style: preserve-3d;
+}
+
+.scratch-card.is-tilting {
+  transform: perspective(800px) rotateX(3deg) rotateY(-2deg) scale(1.01);
+  box-shadow: 0 16px 40px rgba(11, 31, 58, 0.28);
+}
+
+.scratch-card.is-popping {
+  animation: scratch-pop 0.45s cubic-bezier(0.22, 1.2, 0.36, 1);
+}
+
+.scratch-card.is-revealed {
+  box-shadow: var(--shadow-lg), 0 0 0 2px rgba(201, 162, 39, 0.35);
+}
+
+@keyframes scratch-pop {
+  0% {
+    transform: scale(1);
+  }
+  45% {
+    transform: scale(1.045);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.scratch-result {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.2rem;
+  z-index: 1;
+  padding: var(--space-4);
+}
+
+.scratch-result--low {
+  background: radial-gradient(circle at 30% 20%, #86efac, var(--tier-low-bg) 55%, #bbf7d0);
+  color: #14532d;
+}
+
+.scratch-result--medium {
+  background: radial-gradient(circle at 30% 20%, #fde68a, var(--tier-medium-bg) 55%, #fcd34d);
+  color: #78350f;
+}
+
+.scratch-result--high {
+  background: radial-gradient(circle at 30% 20%, #fca5a5, var(--tier-high-bg) 55%, #fecaca);
+  color: #7f1d1d;
+}
+
+.scratch-icon {
+  width: 2.25rem;
+  height: 2.25rem;
+  margin-bottom: 0.15rem;
+}
+
+.scratch-result-label {
+  font-size: clamp(1.75rem, 8vw, 2.25rem);
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  line-height: 1;
+}
+
+.scratch-result-title {
+  font-size: var(--text-sm);
+  font-weight: 700;
+  opacity: 0.85;
+}
+
+.scratch-result-sub {
+  font-size: var(--text-xs);
+  font-weight: 500;
+  opacity: 0.7;
+}
+
+.scratch-foil {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  cursor: grab;
+  border-radius: inherit;
+  touch-action: none;
+}
+
+.scratch-foil:active {
+  cursor: grabbing;
+}
+
+.scratch-frame {
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  border-radius: inherit;
+  box-shadow: inset 0 0 0 2px rgba(255, 255, 255, 0.25),
+    inset 0 0 0 6px rgba(11, 31, 58, 0.08);
+}
